@@ -31,26 +31,21 @@ void AddonData::remove_instance(class Instance *conn)
 namespace addondata
 {
 
+static AddonData *sAddonDataInstance = nullptr;
+  
 NAN_MODULE_INIT(Init)
 {
-    auto data = new AddonData();
-
-    auto isolate = v8::Isolate::GetCurrent();
-    Nan::SetIsolateData(isolate, data);
-    node::AddEnvironmentCleanupHook(isolate, cleanup, isolate);
+    sAddonDataInstance = new AddonData();
 }
 
 void cleanup(void *p)
 {
-    v8::Isolate *isolate = static_cast<v8::Isolate *>(p);
-    auto data = Nan::GetIsolateData<couchnode::AddonData>(isolate);
-    delete data;
+    delete sAddonDataInstance;
 }
 
 AddonData *Get()
 {
-    return Nan::GetIsolateData<AddonData>(
-        Nan::GetCurrentContext()->GetIsolate());
+    return sAddonDataInstance;
 }
 
 } // namespace addondata
