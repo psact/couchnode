@@ -63,7 +63,7 @@
     "native": false
   },
   "scripts": {
-    "install": "prebuild-install || node-gyp rebuild",
+    "install": "prebuild-install || node-gyp rebuild && tsc",
     "build": "node-gyp build && tsc",
     "rebuild": "node-gyp rebuild && tsc",
     "prebuild": "prebuild --verbose --strip",
