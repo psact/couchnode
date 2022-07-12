@@ -38,5 +38,3 @@ config.json
 /prebuilds/
 *.tar.gz
 
-# Extra stuff
-/dist/
