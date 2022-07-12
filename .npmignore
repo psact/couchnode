@@ -40,7 +40,6 @@ config.json
 
 # Extra stuff
 /.git
-/lib/
 /test/
 .clang-format
 .editorconfig
@@ -50,5 +49,4 @@ config.json
 .prettierrc
 Makefile
 README.md
-tsconfig.json
 typedoc.json
